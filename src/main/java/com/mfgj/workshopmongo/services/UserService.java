@@ -1,0 +1,20 @@
+package com.mfgj.workshopmongo.services;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.mfgj.workshopmongo.domain.User;
+import com.mfgj.workshopmongo.repository.UserRepository;
+
+@Service
+public class UserService {
+
+	@Autowired
+	private UserRepository repo;
+	
+	public List<User> findAll(){
+		return repo.findAll();
+	}
+}
