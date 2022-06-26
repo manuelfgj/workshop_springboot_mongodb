@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 
+import com.mfgj.workshopmongo.config.dto.AuthorDTO;
 import com.mfgj.workshopmongo.domain.Post;
 import com.mfgj.workshopmongo.domain.User;
 import com.mfgj.workshopmongo.repository.PostRepository;
@@ -35,10 +36,11 @@ public class Instatatiation implements CommandLineRunner{
 		User alex = new User(null, "Alex Green", "alex@gmail.com");
 		User bob = new User(null, "Bob Grey", "bob@gmail.com");
 		
-		Post post1 = new Post(null, sdf.parse("26/06/2022"), "I'm going to travel.", "I'm going to travel to Canada.", mary);
-		Post post2 = new Post(null, sdf.parse("26/06/2022"), "Good moring!.", "I'm very happy today!", mary);
-		
 		userRepository.saveAll(Arrays.asList(mary, alex, bob));
+		
+		Post post1 = new Post(null, sdf.parse("26/06/2022"), "I'm going to travel.", "I'm going to travel to Canada.", new AuthorDTO(mary));
+		Post post2 = new Post(null, sdf.parse("26/06/2022"), "Good moring!.", "I'm very happy today!", new AuthorDTO(mary));
+		
 		postRepository.saveAll(Arrays.asList(post1,post2));
 		
 	}
